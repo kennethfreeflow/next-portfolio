@@ -8,7 +8,7 @@ import { classNames } from "../../utils/tailwind";
 import PostBody from "../../components/PostBody";
 import PostTitle from "../../components/PostTitle";
 
-const Project = ({
+const Post = ({
   post,
   morePosts,
   preview,
@@ -80,4 +80,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default Project;
+export default Post;

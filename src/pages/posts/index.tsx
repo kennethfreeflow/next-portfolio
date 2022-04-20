@@ -2,7 +2,7 @@ import PostPreview from "../../components/PostPreview";
 import Layout from "../../layouts/Layout";
 import { getAllPosts } from "../../lib/nextjs";
 
-export default function Projects({ allPosts }: { allPosts: any }) {
+export default function Posts({ allPosts }: { allPosts: any }) {
   return (
     <Layout>
       <section>

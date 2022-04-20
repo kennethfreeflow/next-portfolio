@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         <code className={styles.code}>pages/index.tsx</code>
       </p>
 
-      <Link href="/projects">
+      <Link href="/posts">
         <a>Check out what I'm building</a>
       </Link>
     </div>
