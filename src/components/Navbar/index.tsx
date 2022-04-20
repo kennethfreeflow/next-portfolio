@@ -1,6 +1,12 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { MenuIcon } from "@heroicons/react/outline";
+import Link from "next/link";
 import { Fragment, useState } from "react";
+
+type INavItem = {
+  label: string;
+  href: string;
+};
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,9 +19,20 @@ export default function Navbar() {
     setMenuOpen(false);
   }
 
+  const navItems: INavItem[] = [
+    {
+      label: "Home",
+      href: "/",
+    },
+    {
+      label: "Blog",
+      href: "/posts",
+    },
+  ];
+
   return (
     <>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
@@ -58,7 +75,7 @@ export default function Navbar() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0" />
+              <Dialog.Overlay className="fixed inset-0 bg-white" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
@@ -77,7 +94,12 @@ export default function Navbar() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform ">
+                {navItems.map((navItem) => (
+                  <Link key={navItem.label} href={navItem.href}>
+                    {navItem.label}
+                  </Link>
+                ))}
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
