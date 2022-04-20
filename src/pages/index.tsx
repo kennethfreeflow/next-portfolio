@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
 import Link from "next/link";
+import Layout from "../layouts/Layout";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.main}>
+    <Layout>
       <h1 className={styles.title}>Kenneth Ng</h1>
 
       <p className={styles.description}>
@@ -15,7 +16,7 @@ const Home: NextPage = () => {
       <Link href="/posts">
         <a>Check out what I'm building</a>
       </Link>
-    </div>
+    </Layout>
   );
 };
 
