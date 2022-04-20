@@ -2,11 +2,9 @@ import { useRouter } from "next/router";
 import markdownToHtml from "../../lib/markdownToHtml";
 import { getAllPosts, getPostBySlug } from "../../lib/nextjs";
 import PostHeader from "../../components/PostHeader";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-import { classNames } from "../../utils/tailwind";
 import PostBody from "../../components/PostBody";
 import PostTitle from "../../components/PostTitle";
+import Layout from "../../layouts/Layout";
 
 const Post = ({
   post,
@@ -26,20 +24,16 @@ const Post = ({
   const { title, coverImage, date, content } = post;
 
   return (
-    <>
-      <Navbar />
-      <main className={classNames("min-h-screen")}>
-        {router.isFallback ? (
-          <PostTitle>Loading...</PostTitle>
-        ) : (
-          <article className="mb-32">
-            <PostHeader title={title} coverImage={coverImage} date={date} />
-            <PostBody content={content} />
-          </article>
-        )}
-      </main>
-      <Footer />
-    </>
+    <Layout>
+      {router.isFallback ? (
+        <PostTitle>Loading...</PostTitle>
+      ) : (
+        <article className="mb-32">
+          <PostHeader title={title} coverImage={coverImage} date={date} />
+          <PostBody content={content} />
+        </article>
+      )}
+    </Layout>
   );
 };
 
