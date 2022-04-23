@@ -1,4 +1,11 @@
 import PostPreview from "../../components/PostPreview";
+import {
+  DATE,
+  DESCRIPTION,
+  FEATURED_IMAGE,
+  SLUG,
+  TITLE,
+} from "../../constants/frontMatter";
 import Layout from "../../layouts/Layout";
 import { getAllPosts } from "../../lib/nextjs";
 
@@ -12,11 +19,11 @@ export default function Posts({ allPosts }: { allPosts: any }) {
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
           {allPosts.map((post: any) => (
             <PostPreview
-              key={post.slug}
-              title={post.title}
-              coverImage={post.coverImage}
-              slug={post.slug}
-              excerpt={post.excerpt}
+              key={post[SLUG]}
+              title={post[TITLE]}
+              featuredImage={post[FEATURED_IMAGE]}
+              slug={post[SLUG]}
+              description={post[DESCRIPTION]}
             />
           ))}
         </div>
@@ -27,12 +34,11 @@ export default function Posts({ allPosts }: { allPosts: any }) {
 
 export async function getStaticProps() {
   const allPosts = getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "coverImage",
-    "excerpt",
+    TITLE,
+    DATE,
+    SLUG,
+    FEATURED_IMAGE,
+    DESCRIPTION,
   ]);
 
   return {

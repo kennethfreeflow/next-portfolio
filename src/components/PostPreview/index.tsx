@@ -1,14 +1,24 @@
 import Link from "next/link";
 import CoverImage from "../CoverImage";
 
-export default function PostPreview({ title, coverImage, excerpt, slug }) {
+export default function PostPreview({
+  title,
+  featuredImage,
+  description,
+  slug,
+}: {
+  title: string;
+  featuredImage: string;
+  description: string;
+  slug: string;
+}) {
   return (
     <div>
       <div className="mb-5">
         <CoverImage
           slug={slug}
           title={title}
-          src={coverImage}
+          src={featuredImage}
           height={278}
           width={556}
         />
@@ -18,7 +28,7 @@ export default function PostPreview({ title, coverImage, excerpt, slug }) {
           <a className="hover:underline">{title}</a>
         </Link>
       </h3>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+      <p className="text-lg leading-relaxed mb-4">{description}</p>
     </div>
   );
 }

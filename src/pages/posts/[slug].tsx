@@ -5,6 +5,7 @@ import PostHeader from "../../components/PostHeader";
 import PostBody from "../../components/PostBody";
 import PostTitle from "../../components/PostTitle";
 import Layout from "../../layouts/Layout";
+import { CONTENT, DATE, FEATURED_IMAGE, SLUG, TITLE } from '../../constants/frontMatter';
 
 const Post = ({
   post,
@@ -39,13 +40,11 @@ const Post = ({
 
 export async function getStaticProps({ params }: { params: any }) {
   const post = getPostBySlug(params.slug, [
-    "title",
-    "date",
-    "slug",
-    "author",
-    "content",
-    "ogImage",
-    "coverImage",
+    TITLE,
+    DATE,
+    SLUG,
+    CONTENT,
+    FEATURED_IMAGE,
   ]) as any;
   const content = await markdownToHtml(post.content || "");
 
