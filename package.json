@@ -13,10 +13,12 @@
     "@heroicons/react": "^1.0.6",
     "@mdx-js/loader": "^2.1.0",
     "@next/mdx": "^12.1.1",
+    "algoliasearch": "^4.13.0",
     "gray-matter": "^4.0.3",
     "next": "12.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-instantsearch-hooks": "^6.23.4",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1"
   },
