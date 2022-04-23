@@ -1,21 +1,19 @@
 import type { NextPage } from "next";
-import Link from "next/link";
 import Layout from "../layouts/Layout";
-import styles from "../styles/Home.module.css";
+import searchClient from "../lib/algolia";
+import { InstantSearch } from "react-instantsearch-hooks";
+import { POSTS } from "../constants/indices";
+import AlgoliaSearchBox from "../components/AlgoliaSearchBox";
+import AlgoliaHits from "../components/AlgoliaHits";
+import AlgoliaPostHit from "../components/AlgoliaPostHit";
 
 const Home: NextPage = () => {
   return (
     <Layout>
-      <h1 className={styles.title}>Kenneth Ng</h1>
-
-      <p className={styles.description}>
-        Get started by editing{" "}
-        <code className={styles.code}>pages/index.tsx</code>
-      </p>
-
-      <Link href="/posts">
-        <a>Check out what I'm building</a>
-      </Link>
+      <InstantSearch searchClient={searchClient} indexName={POSTS}>
+        <AlgoliaSearchBox />
+        <AlgoliaHits hitComponent={AlgoliaPostHit} />
+      </InstantSearch>
     </Layout>
   );
 };
